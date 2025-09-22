@@ -1,4 +1,4 @@
-# Breakaway Digital Website Clone
+# Breakaway Digital Website
 
 A complete clone of the OVO Azure business consulting website (https://ovo-azure.webflow.io/) built with modern HTML5, CSS3, and JavaScript. This project replicates the original design, functionality, and user experience with all animations, responsive design, and interactive elements.
 
