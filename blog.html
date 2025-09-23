@@ -4,9 +4,766 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who I Work With - Breakaway Digital</title>
+    <meta content="Discover the industries and types of businesses we work with for digital transformation and IT consulting success." name="description"/>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Basic fallback styles */
+        body { font-family: 'Poppins', Arial, sans-serif; margin: 0; padding: 0; }
+        .navbar { background: white; padding: 1rem 0; border-bottom: 1px solid #eee; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .grid-nav { display: flex; justify-content: space-between; align-items: center; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-link { text-decoration: none; color: #002748; }
+        .nav-link:hover { color: #4a5568; }
+        .nav-link.w--current { text-decoration: underline; }
+        .right-nav { display: flex; align-items: center; gap: 1rem; }
+        .button-link-hover { background: #002748; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 500; display: inline-block; transition: all 0.3s ease; }
+        .button-link-hover:hover { background: #1a3a5c; transform: translateY(-1px); }
+        
+        /* Who I Work With Page Styles */
+        .hero-section { 
+            padding: 100px 0 140px 0; 
+            background: white; 
+            margin-top: 70px; 
+            transform: scale(1.05);
+            transform-origin: center top;
+            overflow: hidden;
+        }
+        
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .hero-left {
+            max-width: 600px;
+        }
+        
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: bold;
+            color: #002748;
+            margin-bottom: 2rem;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-description {
+            font-size: 1.4rem;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+            max-width: 550px;
+        }
+        
+        .hero-stats-cards {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .hero-stat {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+        
+        .industry-cards {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .industry-mini-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+        }
+        
+        .mini-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .mini-card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 39, 72, 0.8);
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .testimonial-card {
+            background: #002748;
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .hero-images-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .hero-left-image {
+            grid-row: span 2;
+        }
+        
+        .hero-main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transform: scale(1.1);
+            transform-origin: center;
+        }
+        
+        .hero-right-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .hero-secondary-image,
+        .hero-third-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 80px 0 100px 0;
+            transform: scale(1.05);
+            transform-origin: center;
+            overflow: hidden;
+        }
+        
+        .stats-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .stats-content {
+            max-width: 600px;
+        }
+        
+        .kpi-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .kpi-item {
+            text-align: left;
+        }
+        
+        .kpi-label {
+            font-size: 1rem;
+            color: #4a5568;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        
+        .kpi-number {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: #002748;
+            margin-bottom: 0.75rem;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+        }
+        
+        .kpi-description {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .stats-divider {
+            width: 100%;
+            height: 1px;
+            background: #e2e8f0;
+            margin: 2rem 0;
+        }
+        
+        .about-label {
+            font-size: 0.9rem;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .about-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #002748;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .about-description {
+            font-size: 1.3rem;
+            color: #4a5568;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+            max-width: 550px;
+        }
+        
+        .about-button {
+            background: #002748;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .about-button:hover {
+            background: #1a3a5c;
+            transform: translateY(-1px);
+        }
+        
+        .stats-image {
+            position: relative;
+        }
+        
+        .stats-main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            transform: scale(1.1);
+            transform-origin: center;
+        }
+        
+        /* Client Logos Section */
+        .client-logos-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+        }
+        
+        .client-logos-content {
+            text-align: center;
+        }
+        
+        .client-logos-title {
+            font-size: 1.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .client-logos-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .client-logo-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .client-logo-image {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .client-logo-image:hover {
+            opacity: 1;
+        }
+        
+        .client-logos-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            color: #4a5568;
+        }
+        
+        .footer-text {
+            font-size: 1rem;
+        }
+        
+        .footer-plus {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        /* Industries Section */
+        .industries-section { 
+            background: #f8f9fa; 
+            padding: 6rem 0; 
+        }
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 4rem; 
+        }
+        
+        .section-title h2 { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            color: #002748; 
+            line-height: 1.2; 
+            margin-bottom: 1rem; 
+        }
+        
+        .section-description { 
+            font-size: 1.2rem; 
+            color: #4a5568; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            line-height: 1.6; 
+        }
+        
+        .industries-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
+        
+        .industry-card { 
+            background: white; 
+            padding: 3rem 2rem; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+            border: 1px solid #f0f0f0; 
+            text-align: center; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        
+        .industry-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); 
+        }
+        
+        .industry-icon { 
+            margin-bottom: 1.5rem; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .industry-title { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            color: #002748; 
+            margin-bottom: 1rem; 
+        }
+        
+        .industry-description { 
+            font-size: 1rem; 
+            line-height: 1.6; 
+            color: #4a5568; 
+            margin: 0; 
+        }
+        
+        /* Business Types Section */
+        .business-types-section { 
+            background: white; 
+            padding: 6rem 0; 
+        }
+        
+        .business-types-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+        }
+        
+        .business-types-content { 
+            max-width: 600px; 
+        }
+        
+        .business-types-title { 
+            font-size: 2.5rem; 
+            font-weight: bold; 
+            color: #002748; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.2; 
+        }
+        
+        .business-types-description { 
+            font-size: 1.1rem; 
+            color: #4a5568; 
+            margin-bottom: 2rem; 
+            line-height: 1.6; 
+        }
+        
+        .business-types-list { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        
+        .business-types-list li { 
+            font-size: 1.1rem; 
+            color: #4a5568; 
+            margin-bottom: 1rem; 
+            position: relative; 
+            padding-left: 2rem; 
+        }
+        
+        .business-types-list li::before { 
+            content: '✓'; 
+            color: #002748; 
+            font-weight: bold; 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+        }
+        
+        .business-types-image { 
+            position: relative; 
+        }
+        
+        .business-types-main-image { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); 
+        }
+        
+        /* My Approach Section */
+        .approach-section { 
+            background: #002748; 
+            color: white; 
+            padding: 6rem 0; 
+        }
+        
+        .approach-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+        }
+        
+        .approach-content { 
+            max-width: 600px; 
+        }
+        
+        .approach-label { 
+            color: #888; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 1rem; 
+        }
+        
+        .approach-title { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            margin-bottom: 1.5rem; 
+            line-height: 1.2; 
+        }
+        
+        .approach-description { 
+            color: #ccc; 
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            margin-bottom: 2rem; 
+        }
+        
+        .approach-steps { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.5rem; 
+        }
+        
+        .approach-step { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+        }
+        
+        .step-number { 
+            background: #F05A2B; 
+            color: white; 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+        }
+        
+        .step-content { 
+            flex: 1; 
+        }
+        
+        .step-title { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            margin-bottom: 0.5rem; 
+        }
+        
+        .step-description { 
+            color: #ccc; 
+            font-size: 1rem; 
+            line-height: 1.5; 
+        }
+        
+        .approach-image { 
+            position: relative; 
+        }
+        
+        .approach-main-image { 
+            width: 100%; 
+            height: 500px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+        }
+        
+        .approach-cta { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 20px; 
+            right: 20px; 
+        }
+        
+        .approach-button { 
+            background: white; 
+            color: #002748; 
+            padding: 1rem 1.5rem; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            display: block; 
+            text-align: center; 
+            transition: all 0.3s ease; 
+        }
+        
+        .approach-button:hover { 
+            background: #f0f0f0; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); 
+        }
+        
+        /* CTA Section */
+        .cta-section { 
+            background: white; 
+            padding: 6rem 0; 
+        }
+        
+        .container-medium { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+        }
+        
+        .grid-cta { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            align-items: center; 
+        }
+        
+        .cta-content { 
+            max-width: 600px; 
+        }
+        
+        .cta-title { 
+            font-size: 3rem; 
+            font-weight: bold; 
+            color: #002748; 
+            margin-bottom: 2rem; 
+            line-height: 1.2; 
+        }
+        
+        .cta-description { 
+            font-size: 1.1rem; 
+            color: #4a5568; 
+            margin-bottom: 2rem; 
+            line-height: 1.6; 
+        }
+        
+        .cta-image-wrap { 
+            position: relative; 
+        }
+        
+        .cta-main-image { 
+            width: 100%; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 12px; 
+        }
+        
+        .cta-overlay { 
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+        }
+        
+        .cta-button .button-link-hover { 
+            background: white; 
+            color: #002748; 
+        }
+        
+        .cta-button .button-link-hover:hover { 
+            background: #f8f8f8; 
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .industries-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .business-types-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .approach-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .grid-cta {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .business-types-title {
+                font-size: 2rem;
+            }
+            
+            .approach-title {
+                font-size: 2.5rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero-contact-wrap h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .business-types-title {
+                font-size: 1.8rem;
+            }
+            
+            .approach-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .industry-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -44,348 +801,47 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="clients-hero">
+    <section class="hero-section">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-handshake"></i>
-                    <span>Trusted Partners</span>
-                </div>
-                <h1>Who I Work With</h1>
-                <p>Discover the diverse range of businesses and organizations that trust Breakaway Digital to transform their technology strategy and drive sustainable growth through innovative solutions.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Successful Projects</span>
-            </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Industries Served</span>
-        </div>
-                    <div class="stat-item">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Client Satisfaction</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-cards">
-                    <div class="card card-1">
-                        <i class="fas fa-building"></i>
-                        <span>Enterprise</span>
-                    </div>
-                    <div class="card card-2">
-                        <i class="fas fa-rocket"></i>
-                        <span>Startups</span>
-                    </div>
-                    <div class="card card-3">
-                        <i class="fas fa-heart"></i>
-                        <span>Non-Profit</span>
-                    </div>
-                    <div class="card card-4">
-                        <i class="fas fa-landmark"></i>
-                        <span>Government</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Client Categories -->
-    <section class="client-categories">
-        <div class="container">
-            <div class="category-filters">
-                <button class="filter-btn active" data-category="all">All Clients</button>
-                <button class="filter-btn" data-category="startups">Startups</button>
-                <button class="filter-btn" data-category="enterprise">Enterprise</button>
-                <button class="filter-btn" data-category="nonprofit">Non-Profit</button>
-                <button class="filter-btn" data-category="government">Government</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Client -->
-    <section class="featured-client">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Success Story</h2>
-                <p>See how we've helped organizations transform their technology strategy</p>
-            </div>
-            <div class="featured-client-content">
-                <div class="client-visual">
-                    <div class="client-image">
-                        <img src="https://www.asta.com.au/media/1482/pexels-rebrand-cities-1367271.jpg" alt="TechCorp Solutions Office">
-                    </div>
-                    <div class="client-achievements">
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <span class="achievement-title">Technology Strategy</span>
-                                <span class="achievement-desc">Comprehensive roadmap delivered</span>
-                            </div>
+            <div class="hero-layout">
+                <div class="hero-left">
+                    <h1 class="hero-title">Industries I work with</h1>
+                    <p class="hero-description">I partner with businesses across diverse sectors to drive growth, optimize operations, and achieve sustainable success through strategic consulting.</p>
+                    <a href="contact.html" class="button-link-hover">Start working together</a>
+                    <div class="hero-stats-cards">
+                        <div class="hero-stats">
+                            <div class="hero-stat">Trusted by 260+ businesses</div>
+                            <div class="hero-stat">Across 15+ industries worldwide</div>
                         </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-shield-alt"></i>
+                        <div class="industry-cards">
+                            <div class="industry-mini-card">
+                                <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/6830493ba0c1b152a02b87df_hero-sm-image-01.jpg" alt="Technology" class="mini-card-image"/>
+                                <div class="mini-card-text">Tech</div>
                             </div>
-                            <div class="achievement-content">
-                                <span class="achievement-title">Cybersecurity</span>
-                                <span class="achievement-desc">Enhanced security posture</span>
-                            </div>
-                        </div>
-                        <div class="achievement-card">
-                            <div class="achievement-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="achievement-content">
-                                <span class="achievement-title">AI Readiness</span>
-                                <span class="achievement-desc">Assessment completed</span>
+                            <div class="industry-mini-card">
+                                <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/6830493b27791a78a9f46410_hero-sm-image-02.jpg" alt="Healthcare" class="mini-card-image"/>
+                                <div class="mini-card-text">Health</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="client-details">
-                    <div class="client-header">
-                        <span class="client-category">Enterprise</span>
-                        <div class="client-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span>5.0</span>
+                <div class="hero-right">
+                    <div class="hero-images-layout">
+                        <div class="hero-left-image">
+                            <img class="hero-main-image" src="https://www.asta.com.au/media/1477/pexels-fauxels-3184665.jpg" alt="Professional team working"/>
                         </div>
-                    </div>
-                    <h2>TechCorp Solutions</h2>
-                    <p class="client-description">A leading technology company that partnered with us to streamline their operations and implement comprehensive digital transformation strategies. We helped them reduce operational costs by 30% and increase efficiency across all departments through strategic technology consulting.</p>
-                    <div class="client-stats">
-                        <div class="stat">
-                            <div class="stat-icon">
-                            <i class="fas fa-chart-line"></i>
+                        <div class="hero-right-images">
+                            <img class="hero-secondary-image" src="https://www.asta.com.au/media/1482/pexels-rebrand-cities-1367271.jpg" alt="Team collaboration"/>
+                            <div class="testimonial-card">
+                                <p class="testimonial-text">"The consultant helped us transform our operations and achieve 40% growth in just 6 months."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/68314ec582b2956a9125402e_hero-image-02.jpg" alt="Sarah Johnson" class="author-avatar"/>
+                                    <div class="author-info">
+                                        <div class="author-name">Sarah Johnson</div>
+                                        <div class="author-title">CEO, TechCorp</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="stat-content">
-                                <span class="stat-number">30%</span>
-                                <span class="stat-label">Cost Reduction</span>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="stat-content">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Team Members</span>
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <i class="fas fa-calendar"></i>
-                            </div>
-                            <div class="stat-content">
-                                <span class="stat-number">2 Years</span>
-                                <span class="stat-label">Partnership</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="client-testimonial">
-                        <blockquote>
-                            "Breakaway Digital transformed our technology strategy and helped us achieve unprecedented efficiency gains. Their expertise in AI readiness assessment and cybersecurity was invaluable."
-                        </blockquote>
-                        <cite>
-                            <strong>Sarah Johnson</strong>
-                            <span>CTO, TechCorp Solutions</span>
-                        </cite>
-                    </div>
-                    <a href="contact.html" class="btn btn-primary">Work With Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Client Showcase Grid -->
-    <section class="clients-showcase">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Client Portfolio</h2>
-                <p>From startups to enterprise organizations, we've helped businesses across industries achieve their technology goals</p>
-            </div>
-            <div class="clients-grid">
-                <div class="client-card" data-category="startups">
-                    <div class="card-header">
-                        <div class="client-logo">
-                            <div class="logo-placeholder">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                        </div>
-                        <div class="client-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>InnovateStart</h3>
-                        <p class="client-industry">Fintech Startup</p>
-                        <p class="client-description">Helped this fintech startup develop their AI readiness strategy and implement cybersecurity frameworks to secure Series A funding.</p>
-                        <div class="client-results">
-                            <div class="result">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>$2M+ Raised</span>
-                            </div>
-                            <div class="result">
-                                <i class="fas fa-clock"></i>
-                                <span>6 Months</span>
-                            </div>
-                        </div>
-                        <div class="client-services">
-                            <span class="service-tag">AI Readiness</span>
-                            <span class="service-tag">Cybersecurity</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-card" data-category="enterprise">
-                    <div class="card-header">
-                        <div class="client-logo">
-                            <div class="logo-placeholder">
-                                <i class="fas fa-industry"></i>
-                            </div>
-                        </div>
-                        <div class="client-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>Global Manufacturing Co.</h3>
-                        <p class="client-industry">Manufacturing</p>
-                        <p class="client-description">Implemented comprehensive technology strategy and IT infrastructure review across 15 manufacturing facilities worldwide.</p>
-                        <div class="client-results">
-                            <div class="result">
-                                <i class="fas fa-building"></i>
-                                <span>15 Facilities</span>
-                            </div>
-                            <div class="result">
-                                <i class="fas fa-chart-line"></i>
-                                <span>25% Efficiency</span>
-                            </div>
-                        </div>
-                        <div class="client-services">
-                            <span class="service-tag">Technology Strategy</span>
-                            <span class="service-tag">Infrastructure Review</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-card" data-category="nonprofit">
-                    <div class="card-header">
-                        <div class="client-logo">
-                            <div class="logo-placeholder">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                        </div>
-                        <div class="client-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>Hope Foundation</h3>
-                        <p class="client-industry">Non-Profit</p>
-                        <p class="client-description">Streamlined operations and improved donor engagement through governance & controls framework and capability assessment.</p>
-                        <div class="client-results">
-                            <div class="result">
-                                <i class="fas fa-chart-line"></i>
-                                <span>40% Growth</span>
-                            </div>
-                            <div class="result">
-                                <i class="fas fa-calendar"></i>
-                                <span>3 Years</span>
-                            </div>
-                        </div>
-                        <div class="client-services">
-                            <span class="service-tag">Governance</span>
-                            <span class="service-tag">Capability Assessment</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-card" data-category="government">
-                    <div class="card-header">
-                        <div class="client-logo">
-                            <div class="logo-placeholder">
-                                <i class="fas fa-landmark"></i>
-                            </div>
-                        </div>
-                        <div class="client-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>City Development Agency</h3>
-                        <p class="client-industry">Government</p>
-                        <p class="client-description">Developed comprehensive technology strategy and cybersecurity frameworks for urban planning and citizen engagement programs.</p>
-                        <div class="client-results">
-                            <div class="result">
-                                <i class="fas fa-users"></i>
-                                <span>500K+ Citizens</span>
-                            </div>
-                            <div class="result">
-                                <i class="fas fa-calendar"></i>
-                                <span>2 Years</span>
-                            </div>
-                        </div>
-                        <div class="client-services">
-                            <span class="service-tag">Technology Strategy</span>
-                            <span class="service-tag">Cybersecurity</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-card" data-category="startups">
-                    <div class="client-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>E-Commerce Plus</h3>
-                        <p class="client-industry">E-Commerce</p>
-                        <p class="client-description">Optimized supply chain operations and implemented data-driven decision making.</p>
-                        <div class="client-results">
-                            <span class="result">200% Growth</span>
-                            <span class="result">18 Months</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="client-card" data-category="enterprise">
-                    <div class="client-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                    </div>
-                    <div class="client-info">
-                        <h3>MediCare Systems</h3>
-                        <p class="client-industry">Healthcare</p>
-                        <p class="client-description">Implemented patient management systems and operational efficiency improvements.</p>
-                        <div class="client-results">
-                            <span class="result">35% Efficiency</span>
-                            <span class="result">4 Years</span>
                         </div>
                     </div>
                 </div>
@@ -393,68 +849,244 @@
         </div>
     </section>
 
-    <!-- Client Testimonials -->
-    <section class="client-testimonials">
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Breakaway Digital transformed our business operations completely. Their strategic approach and attention to detail helped us achieve 30% cost reduction while improving efficiency."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
+            <div class="stats-layout">
+                <div class="stats-content">
+                    <!-- KPI Stats -->
+                    <div class="kpi-stats">
+                        <div class="kpi-item">
+                            <div class="kpi-label">Industries served</div>
+                            <div class="kpi-number">15+</div>
+                            <div class="kpi-description">Diverse sectors with expertise</div>
                         </div>
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p>CEO, TechCorp Solutions</p>
+                        <div class="kpi-item">
+                            <div class="kpi-label">Success rate</div>
+                            <div class="kpi-number">95%</div>
+                            <div class="kpi-description">Client satisfaction rate</div>
+                        </div>
+                        <div class="kpi-item">
+                            <div class="kpi-label">Average growth</div>
+                            <div class="kpi-number">40%</div>
+                            <div class="kpi-description">Revenue increase achieved</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-divider"></div>
+                    
+                    <!-- About Content -->
+                    <div class="about-text">
+                        <div class="about-label">INDUSTRY EXPERTISE</div>
+                        <h2 class="about-title">Deep knowledge across diverse sectors</h2>
+                        <p class="about-description">I bring specialized industry insights and proven methodologies to help businesses in various sectors overcome unique challenges and achieve sustainable growth.</p>
+                        <a href="contact.html" class="about-button">Discuss your industry</a>
+                    </div>
+                </div>
+                <div class="stats-image">
+                    <img src="https://www.asta.com.au/media/1479/pexels-jonathan-borba-3285200.jpg" 
+                         alt="Professional team working across industries" 
+                         class="stats-main-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Industries I specialize in</h2>
+                <p class="section-description">From technology startups to established enterprises, I bring deep industry knowledge and proven strategies to help businesses thrive.</p>
+            </div>
+            
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Technology" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Technology</h3>
+                    <p class="industry-description">SaaS companies, tech startups, and digital transformation initiatives looking to scale and optimize their operations.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Healthcare" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Healthcare</h3>
+                    <p class="industry-description">Healthcare providers, medical technology companies, and health services organizations seeking operational excellence.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Financial Services" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Financial Services</h3>
+                    <p class="industry-description">Banks, fintech companies, and financial institutions focused on digital transformation and process optimization.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Manufacturing" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Manufacturing</h3>
+                    <p class="industry-description">Manufacturing companies looking to improve efficiency, reduce costs, and implement lean methodologies.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Retail" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Retail & E-commerce</h3>
+                    <p class="industry-description">Retail businesses and e-commerce platforms seeking to optimize supply chains and customer experience.</p>
+                </div>
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/683d273f534204f62c0f48cb_plus-icon.svg" alt="Education" style="width: 40px; height: 40px; opacity: 0.8;"/>
+                    </div>
+                    <h3 class="industry-title">Education</h3>
+                    <p class="industry-description">Educational institutions and edtech companies focused on improving learning outcomes and operational efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Logos Section -->
+    <section class="client-logos-section">
+        <div class="container">
+            <div class="client-logos-content">
+                <h3 class="client-logos-title">Trusted by industry leaders</h3>
+                <div class="client-logos-grid">
+                    <div class="client-logo-item">
+                        <img src="Untitled design (1).png" alt="Client Logo" class="client-logo-image"/>
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="Untitled design (1).png" alt="Client Logo" class="client-logo-image"/>
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="Untitled design (1).png" alt="Client Logo" class="client-logo-image"/>
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="Untitled design (1).png" alt="Client Logo" class="client-logo-image"/>
+                    </div>
+                    <div class="client-logo-item">
+                        <img src="Untitled design (1).png" alt="Client Logo" class="client-logo-image"/>
+                    </div>
+                </div>
+                <div class="client-logos-footer">
+                    <span class="footer-text">Across multiple industries</span>
+                    <span class="footer-plus">+</span>
+                    <span class="footer-text">Proven results</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Types Section -->
+    <section class="business-types-section">
+        <div class="container">
+            <div class="business-types-grid">
+                <div class="business-types-content">
+                    <h2 class="business-types-title">Types of businesses I work with</h2>
+                    <p class="business-types-description">I partner with organizations of all sizes, from ambitious startups to established enterprises, each with unique challenges and opportunities.</p>
+                    
+                    <ul class="business-types-list">
+                        <li>Startups and early-stage companies</li>
+                        <li>Scale-up businesses ready for growth</li>
+                        <li>Mid-market companies seeking optimization</li>
+                        <li>Large enterprises undergoing transformation</li>
+                        <li>Family-owned businesses</li>
+                        <li>Non-profit organizations</li>
+                    </ul>
+                </div>
+                
+                <div class="business-types-image">
+                    <img src="https://www.asta.com.au/media/1493/pexels-fauxels-3182759.jpg" 
+                         alt="Professional team collaboration in modern office" 
+                         class="business-types-main-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Approach Section -->
+    <section class="approach-section">
+        <div class="container">
+            <div class="approach-grid">
+                <div class="approach-content">
+                    <div class="approach-label">My approach</div>
+                    <h2 class="approach-title">How I work with your industry</h2>
+                    <p class="approach-description">I bring industry-specific expertise and a proven methodology to help your business overcome challenges and achieve sustainable growth.</p>
+                    
+                    <div class="approach-steps">
+                        <div class="approach-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <div class="step-title">Industry Analysis</div>
+                                <div class="step-description">Deep dive into your industry landscape, competitive dynamics, and market opportunities.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="approach-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <div class="step-title">Custom Strategy</div>
+                                <div class="step-description">Develop tailored strategies that align with your industry's unique characteristics and challenges.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="approach-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <div class="step-title">Implementation</div>
+                                <div class="step-description">Execute strategies with industry-specific best practices and proven methodologies.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="approach-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <div class="step-title">Optimization</div>
+                                <div class="step-description">Continuously monitor and optimize performance to ensure sustainable growth and success.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Working with Breakaway Digital was a game-changer for our startup. They helped us secure funding and scale our operations effectively."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p>Founder, InnovateStart</p>
-                        </div>
-                    </div>
-            </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>"Their expertise in digital transformation helped us modernize our manufacturing processes across all our global facilities."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4>David Rodriguez</h4>
-                            <p>COO, Global Manufacturing Co.</p>
-                        </div>
+                
+                <div class="approach-image">
+                    <img src="https://www.asta.com.au/media/1477/pexels-fauxels-3184665.jpg" 
+                         alt="Professional working on strategy" 
+                         class="approach-main-image">
+                    <div class="approach-cta">
+                        <a href="contact.html" class="approach-button">Ready to work together?</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="container">
-            <h3>SUBSCRIBE TO RECEIVE BREAKAWAY DIGITAL UPDATES</h3>
-            <form class="newsletter-form">
-                <input type="text" placeholder="First name" required>
-                <input type="email" placeholder="Email" required>
-                <button type="submit" class="btn-newsletter">SUBSCRIBE</button>
-            </form>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container-medium">
+            <div class="grid-cta">
+                <div class="cta-content">
+                    <h2 class="cta-title">Let's discuss your industry challenges</h2>
+                    <p class="cta-description">Whether you're in technology, healthcare, manufacturing, or any other sector, I'm here to help you navigate industry-specific challenges and unlock growth opportunities.</p>
+                    <a href="contact.html" class="button-link-hover">Start the conversation</a>
+                </div>
+                
+                <div class="cta-image-wrap">
+                    <img src="https://cdn.prod.website-files.com/682eb96f62a81d664ea524a9/68428f2dc02fae853004580c_0b5ae92944131d04bdc9a374549e0299_contact-bg-image.jpg" 
+                         alt="Professional team discussing strategy" 
+                         class="cta-main-image">
+                    <div class="cta-overlay">
+                        <div class="cta-button">
+                            <a href="contact.html" class="button-link-hover">Book a consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -476,26 +1108,27 @@
                         <li><a href="#careers">Careers</a></li>
                         <li><a href="#experience">2024 Experience</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Schedule a Consultation</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Services</h4>
+                    <h4>SERVICES</h4>
                     <ul>
                         <li><a href="services.html">Strategy & Planning</a></li>
+                        <li><a href="services.html">Market Research</a></li>
                         <li><a href="services.html">Financial Consulting</a></li>
                         <li><a href="services.html">Operations</a></li>
-                        <li><a href="services.html">Technology</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h4>Client Types</h4>
+                    <h4>RESOURCES</h4>
                     <ul>
-                        <li><a href="blog.html">Startups</a></li>
-                        <li><a href="blog.html">Enterprise</a></li>
-                        <li><a href="blog.html">Non-Profit</a></li>
-                        <li><a href="blog.html">Government</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#downloads">Free Downloads</a></li>
+                        <li><a href="#workshops">Upcoming Workshops</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
                     </ul>
                 </div>
             </div>
@@ -509,40 +1142,19 @@
                             <a href="#terms">Terms of Service</a>
                         </div>
                     </div>
+                    <div class="footer-social">
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Client filtering functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const clientCards = document.querySelectorAll('.client-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const category = this.getAttribute('data-category');
-
-                    clientCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            card.style.display = 'block';
-                            card.style.animation = 'fadeInUp 0.5s ease';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
-
-
