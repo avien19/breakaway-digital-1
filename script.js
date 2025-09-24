@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFloatingCards();
     initNavbarScroll();
     initServiceSwitching();
+    initUnifiedNavigation();
 });
 
 // Navigation functionality
@@ -550,6 +551,134 @@ function initServiceSwitching() {
                 serviceDetails.style.transform = 'translateY(0)';
             }, 250);
         }
+    }
+}
+
+// Unified Navigation Component
+function initUnifiedNavigation() {
+    // Check if navigation already exists
+    const existingNav = document.querySelector('.navbar');
+    if (existingNav) {
+        // Update existing navigation with standardized structure
+        updateExistingNavigation();
+    } else {
+        // Create new navigation if it doesn't exist
+        createNewNavigation();
+    }
+}
+
+function updateExistingNavigation() {
+    const navMenu = document.querySelector('.nav-menu');
+    if (!navMenu) return;
+
+    // Standardize navigation order
+    const standardNavItems = [
+        { href: 'index.html', text: 'Home' },
+        { href: 'services.html', text: 'Services' },
+        { href: 'about.html', text: 'About' },
+        { href: 'blog.html', text: 'Who I Work With' },
+        { href: 'contact.html', text: 'Contact' }
+    ];
+
+    // Get current page
+    const currentPage = getCurrentPage();
+    
+    // Update navigation items
+    navMenu.innerHTML = standardNavItems.map(item => `
+        <li class="nav-item">
+            <a href="${item.href}" class="nav-link ${isActivePage(item.href, currentPage) ? 'active' : ''}">${item.text}</a>
+        </li>
+    `).join('');
+
+    // Re-attach event listeners
+    attachNavigationEventListeners();
+}
+
+function createNewNavigation() {
+    const currentPage = getCurrentPage();
+    const standardNavItems = [
+        { href: 'index.html', text: 'Home' },
+        { href: 'services.html', text: 'Services' },
+        { href: 'about.html', text: 'About' },
+        { href: 'blog.html', text: 'Who I Work With' },
+        { href: 'contact.html', text: 'Contact' }
+    ];
+
+    const navigationHTML = `
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <div class="logo-container">
+                        <img src="bd-icon.png" alt="Breakaway Digital Icon" class="logo-icon">
+                        <img src="bd-text.png" alt="Breakaway Digital" class="logo-text">
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    ${standardNavItems.map(item => `
+                        <li class="nav-item">
+                            <a href="${item.href}" class="nav-link ${isActivePage(item.href, currentPage) ? 'active' : ''}">${item.text}</a>
+                        </li>
+                    `).join('')}
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    `;
+
+    // Insert navigation at the beginning of body
+    document.body.insertAdjacentHTML('afterbegin', navigationHTML);
+    
+    // Attach event listeners
+    attachNavigationEventListeners();
+}
+
+function getCurrentPage() {
+    const path = window.location.pathname;
+    const page = path.split('/').pop() || 'index.html';
+    return page;
+}
+
+function isActivePage(href, currentPage) {
+    return currentPage === href || 
+           (currentPage === 'index.html' && href === 'index.html') ||
+           (currentPage === '' && href === 'index.html');
+}
+
+function attachNavigationEventListeners() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if (hamburger && navMenu) {
+        // Remove existing event listeners
+        const newHamburger = hamburger.cloneNode(true);
+        hamburger.parentNode.replaceChild(newHamburger, hamburger);
+
+        // Add new event listeners
+        newHamburger.addEventListener('click', function() {
+            newHamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                newHamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!newHamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                newHamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     }
 }
 

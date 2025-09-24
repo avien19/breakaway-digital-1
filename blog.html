@@ -9,18 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Basic fallback styles */
-        body { font-family: 'Poppins', Arial, sans-serif; margin: 0; padding: 0; }
-        .navbar { background: white; padding: 1rem 0; border-bottom: 1px solid #eee; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .grid-nav { display: flex; justify-content: space-between; align-items: center; }
-        .nav-menu { display: flex; gap: 2rem; list-style: none; }
-        .nav-link { text-decoration: none; color: #002748; }
-        .nav-link:hover { color: #4a5568; }
-        .nav-link.w--current { text-decoration: underline; }
-        .right-nav { display: flex; align-items: center; gap: 1rem; }
-        .button-link-hover { background: #002748; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 500; display: inline-block; transition: all 0.3s ease; }
-        .button-link-hover:hover { background: #1a3a5c; transform: translateY(-1px); }
+        /* Page-specific styles only - navbar styles removed to use main styles.css */
         
         /* Who I Work With Page Styles */
         .hero-section { 
@@ -1208,6 +1197,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h3>SUBSCRIBE TO RECEIVE BREAKAWAY DIGITAL UPDATES</h3>
+            <form class="newsletter-form">
+                <input type="text" placeholder="First name" required>
+                <input type="email" placeholder="Email" required>
+                <button type="submit" class="btn-newsletter">SUBSCRIBE</button>
+            </form>
+            <p class="newsletter-disclaimer">By subscribing you agree to our Privacy Policy and provide consent to receive updates from our company.</p>
         </div>
     </section>
 
